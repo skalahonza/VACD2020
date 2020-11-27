@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 
 using FluentAssertions;
@@ -16,6 +15,7 @@ namespace Hello.Service.Tests
 
         public BasicTest()
         {
+            // Arrange
             var configuration = new ConfigurationBuilder()
                 .AddEnvironmentVariables()
                 .AddUserSecrets<BasicTest>()
@@ -34,7 +34,9 @@ namespace Hello.Service.Tests
         [InlineData("John")]
         public async Task SayHello(string name)
         {
+            // Act
             var response =  await _service.SayHello(name);
+            // Assert
             response.Should().Contain($"Hello, {name}.", because: "The user's name is {0}", becauseArgs: name);
         }
     }
