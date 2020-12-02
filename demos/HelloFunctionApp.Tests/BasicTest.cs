@@ -30,7 +30,7 @@ namespace HelloFunctionApp.Tests
         private static HttpRequest Mock(string name)
         {
             var mock = new Mock<HttpRequest>();
-            mock.SetupGet(x => x.Body).Returns(new MemoryStream());
+            mock.SetupGet(x => x.Body).Returns(new MemoryStream()); // empty stream
             mock.SetupGet(x => x.Query).Returns(new QueryCollection(new Dictionary<string, StringValues> { ["name"] = name }));
             return mock.Object;
         }
