@@ -22,7 +22,7 @@ namespace WordCount
             ILogger log)
         {
             string filename = req.Query["name"];
-            var input = await binder.BindAsync<Stream>(new BlobAttribute("$lyrics/{filename}", FileAccess.Read) { Connection = "Blob" });
+            var input = await binder.BindAsync<Stream>(new BlobAttribute($"lyrics/{filename}", FileAccess.Read) { Connection = "Blob" });
 
             log.LogInformation($"C# HTTP trigger function Processed blob\n Name:{filename} \n Size: {input.Length} Bytes");
             var words = new Dictionary<string, int>();
