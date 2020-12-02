@@ -23,6 +23,9 @@ namespace Hello.Service.Tests
 
             var services = new ServiceCollection();
             services.AddOptions<HelloServiceOptions>().Bind(configuration).ValidateDataAnnotations();
+
+            // effective usage of HttpClient 
+            // check this https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#how-to-use-typed-clients-with-ihttpclientfactory
             services.AddHttpClient<HelloService>();
 
             _service = services.BuildServiceProvider().GetRequiredService<HelloService>();
