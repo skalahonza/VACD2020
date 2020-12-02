@@ -21,13 +21,11 @@ namespace Hello.Service.Tests
                 .AddUserSecrets<BasicTest>()
                 .Build();
 
-            _service = new ServiceCollection()
-                .AddOptions<HelloServiceOptions>().Bind(configuration).ValidateDataAnnotations()
-                .Services
-                .AddHttpClient<HelloService>()
-                .Services
-                .BuildServiceProvider()
-                .GetRequiredService<HelloService>();
+            var services = new ServiceCollection();
+            services.AddOptions<HelloServiceOptions>().Bind(configuration).ValidateDataAnnotations();
+            services.AddHttpClient<HelloService>();
+
+            _service = services.BuildServiceProvider().GetRequiredService<HelloService>();
         }
 
         [Theory]
@@ -35,7 +33,7 @@ namespace Hello.Service.Tests
         public async Task SayHello(string name)
         {
             // Act
-            var response =  await _service.SayHello(name);
+            var response = await _service.SayHello(name);
             // Assert
             response.Should().Contain($"Hello, {name}.", because: "The user's name is {0}", becauseArgs: name);
         }
