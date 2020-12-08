@@ -4,6 +4,9 @@ Virtual Azure Community Day (VACD) event.
 
 Dozvíte se jak správně načítat hesla v Unit testech. Jak testovat lokálně nebo v CI/CD pipelině. Podíváme se na to jak otestovat Azure Functions aniž bychom museli ručně debugovat náš kód. Přepokládá se zkušenost s Azure Functions a s Unit testy.
 
+## Záznam
+Můžete sledovat na: https://youtu.be/T2Qi0ery1YI?t=4489
+
 ## Použité technologie
 * C#
 * Visual Sutdio
